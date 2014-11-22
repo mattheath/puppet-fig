@@ -5,7 +5,7 @@ describe "fig" do
     :ensure     => "present",
     :executable => "/test/boxen/bin/fig",
     :user       => "testuser",
-    :version    => "1.0.0",
+    :version    => "1.0.1",
   } }
 
   let(:facts) { default_test_facts }
@@ -16,9 +16,9 @@ describe "fig" do
       should include_class("docker")
 
       should contain_exec("install-fig").with({
-        :command => "curl -L https://github.com/docker/fig/releases/download/1.0.0/fig-Darwin-x86_64 > /test/boxen/bin/fig",
+        :command => "curl -L https://github.com/docker/fig/releases/download/1.0.1/fig-Darwin-x86_64 > /test/boxen/bin/fig",
         :user    => "testuser",
-        :unless  => "test -x /test/boxen/bin/fig && /test/boxen/bin/fig --version | grep '\\b1.0.0\\b'",
+        :unless  => "test -x /test/boxen/bin/fig && /test/boxen/bin/fig --version | grep '\\b1.0.1\\b'",
       })
 
       should contain_exec("fix-fig-permissions").with({
